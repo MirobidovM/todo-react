@@ -20,7 +20,7 @@ export const TodoInput = ({ todos, setTodos }) => {
       return;
     }
 
-    alert('Minimum 3 character');
+    alert('Minimum 4 character');
   };
 
   return (
