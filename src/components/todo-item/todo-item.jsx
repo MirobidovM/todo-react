@@ -1,7 +1,10 @@
-export const TodoItem = ({ todo, todos, setTodos }) => {
+import { showAlert } from '../../utils/alert';
+
+export const TodoItem = ({ todo, todos, setTodos, setAlert }) => {
   const handleDeleteTodo = (id) => {
     const filtredTodo = todos.filter((todo) => todo.id !== id);
     setTodos(filtredTodo);
+    showAlert(setAlert);
   };
 
   const handleEditTodo = (evt) => {
