@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { v4 } from 'uuid';
 import { showAlert } from '../../utils/alert';
+import { setItem } from '../../utils/storage-services';
 
 export const TodoInput = ({ todos, setTodos, setAlert }) => {
   const inputRef = useRef();
@@ -16,7 +17,7 @@ export const TodoInput = ({ todos, setTodos, setAlert }) => {
       };
 
       setTodos((prev) => [newTodo, ...prev]);
-      localStorage.setItem('todos', JSON.stringify([newTodo, ...todos]));
+      setItem('todos', [newTodo, ...todos]);
       showAlert(setAlert);
       inputRef.current.value = null;
       return;

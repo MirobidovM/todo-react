@@ -1,10 +1,12 @@
 import { showAlert } from '../../utils/alert';
+import { setItem } from '../../utils/storage-services';
 
 export const TodoItem = ({ todo, todos, setTodos, setAlert }) => {
   const handleDeleteTodo = (id) => {
     const filtredTodo = todos.filter((todo) => todo.id !== id);
     setTodos(filtredTodo);
     showAlert(setAlert);
+    setItem('todos', filtredTodo);
   };
 
   const handleEditTodo = (evt) => {
@@ -15,9 +17,17 @@ export const TodoItem = ({ todo, todos, setTodos, setAlert }) => {
     editInput.focus();
   };
 
-  const handleSave = (evt) => {
+  const handleSave = (evt, id) => {
     if (evt.keyCode === 13) {
-      console.log(evt.target.value);
+      todos.forEach((todo, i) => {
+        if (todo.id === id) {
+          todos[i].title = evt.target.value;
+        }
+      });
+      setTodos([...todos]);
+      setItem('todos', [...todos]);
+      evt.target.readOnly = true;
+      evt.target.style.border = 'none';
     }
   };
 
@@ -29,7 +39,7 @@ export const TodoItem = ({ todo, todos, setTodos, setAlert }) => {
         defaultValue={todo.title}
         readOnly
         style={{ border: 'none', outline: 'none' }}
-        onKeyUp={handleSave}
+        onKeyUp={(evt) => handleSave(evt, todo.id)}
       />
       <div className="ms-auto">
         <button onClick={handleEditTodo} className="btn btn-success">
