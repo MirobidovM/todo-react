@@ -19,6 +19,7 @@ export const Alert = ({ alert }) => {
             aria-label="Close"
           ></button>
         </div>
+
         <div className="toast-body">Wow, Successfully!</div>
       </div>
     </div>
