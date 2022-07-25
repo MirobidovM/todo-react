@@ -19,6 +19,7 @@ export const App = () => {
     <>
       <div className="container">
         <TodoInput todos={todos} setTodos={setTodos} setAlert={setAlert} />
+
         <TodoList todos={todos} setTodos={setTodos} setAlert={setAlert} />
       </div>
       <Alert alert={alert} />
