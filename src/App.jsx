@@ -10,7 +10,6 @@ export const App = () => {
     error: false,
     success: false,
   });
-
   let [todos, setTodos] = React.useState(
     localTodos ? JSON.parse(localTodos) : []
   );
