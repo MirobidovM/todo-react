@@ -21,7 +21,6 @@ export const App = () => {
         <TodoInput todos={todos} setTodos={setTodos} setAlert={setAlert} />
         <TodoList todos={todos} setTodos={setTodos} setAlert={setAlert} />
       </div>
-
       <Alert alert={alert} />
     </>
   );
